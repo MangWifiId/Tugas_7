@@ -1,10 +1,11 @@
 package todo
 
+
 // Todo adalah data satu todo (sesuai tabel todos)
 type Todo struct {
-  ID     int    `json:"id"`
-  Title  string `json:"title"`
-  IsDone bool   `json:"is_done"`
+    ID     int    `json:"id" gorm:"primaryKey"`
+    Title  string `json:"title" gorm:"not null"`
+    IsDone bool   `json:"is_done" gorm:"not null;default:false"`
 }
 
 // CreateTodoRequest adalah body JSON untuk POST /todos
@@ -18,3 +19,5 @@ type UpdateTodoRequest struct {
   Title  string `json:"title" binding:"required,min=3"`
   IsDone bool   `json:"is_done"`
 }
+
+
